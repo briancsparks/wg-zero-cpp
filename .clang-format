@@ -1,0 +1,4 @@
+---
+Language: Cpp
+BasedOnStyle: LLVM
+# TODO: Add formatting rules

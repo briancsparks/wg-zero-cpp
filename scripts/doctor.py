@@ -1,0 +1,1 @@
+# TODO: Environment checker script
