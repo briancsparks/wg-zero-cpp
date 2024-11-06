@@ -1,0 +1,52 @@
+// src/include/seedlib/logging_config.hpp.in
+
+#ifndef LOGGING_CONFIG_HPP
+#define LOGGING_CONFIG_HPP
+
+
+namespace seedlib::logging {
+
+// CMake-configured options
+#cmakedefine01 ENABLE_DEBUG_LOGGING
+#cmakedefine01 ENABLE_FILE_LOGGING
+#cmakedefine01 ENABLE_ASYNC_LOGGING
+#cmakedefine01 ENABLE_CONSOLE_LOGGING
+#cmakedefine01 ENABLE_SYSLOG_LOGGING
+
+// Log file configuration
+#define LOG_FILE_PATH "@LOG_FILE_PATH@"
+#define LOG_MAX_SIZE "@LOG_MAX_SIZE@"
+#define LOG_MAX_FILES @LOG_MAX_FILES@
+#define LOG_ROTATION_TIME "@LOG_ROTATION_TIME@"
+
+// Log format strings
+#define LOG_CONSOLE_PATTERN "@LOG_CONSOLE_PATTERN@"
+#define LOG_FILE_PATTERN "@LOG_FILE_PATTERN@"
+
+// Default log levels for different environments
+#define LOG_LEVEL_DEVELOPMENT "@LOG_LEVEL_DEVELOPMENT@"
+#define LOG_LEVEL_TESTING "@LOG_LEVEL_TESTING@"
+#define LOG_LEVEL_PRODUCTION "@LOG_LEVEL_PRODUCTION@"
+
+// Optional structured logging fields
+#define LOG_STRUCTURED_METADATA "@LOG_STRUCTURED_METADATA@"
+
+// Performance settings
+#define LOG_QUEUE_SIZE @LOG_QUEUE_SIZE@
+#define LOG_THREAD_COUNT @LOG_THREAD_COUNT@
+#define LOG_FLUSH_INTERVAL_MS @LOG_FLUSH_INTERVAL_MS@
+
+// Environment-specific configuration
+#ifdef NDEBUG
+    #define DEFAULT_LOG_LEVEL LOG_LEVEL_PRODUCTION
+#else
+    #define DEFAULT_LOG_LEVEL LOG_LEVEL_DEVELOPMENT
+#endif
+
+// Stack trace settings for error logging
+#cmakedefine01 ENABLE_STACKTRACE_LOGGING
+#define STACKTRACE_MAX_DEPTH @STACKTRACE_MAX_DEPTH@
+
+} // namespace seedlib::logging
+
+#endif

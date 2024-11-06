@@ -1,0 +1,13 @@
+# cmake/SeedLibConfig.cmake.in
+@PACKAGE_INIT@
+
+include(CMakeFindDependencyMacro)
+
+# Add any dependencies that need to be found
+find_dependency(Boost REQUIRED)
+find_dependency(fmt REQUIRED)
+
+# Include the exported targets
+include("${CMAKE_CURRENT_LIST_DIR}/SeedLibTargets.cmake")
+
+check_required_components(SeedLib)
